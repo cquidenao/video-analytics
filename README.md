@@ -28,3 +28,9 @@ Descargar pesos y configuraciones de YOLOv4 y YOLOv5
 Coloca los archivos yolov4.weights y yolov4.cfg en el directorio yolov5/.
 Descarga los pesos necesarios para YOLOv5 y colócalos en el mismo directorio yolov5/.
 
+
+## Entrenamiento del modelo
+python train_model.py
+
+
+
