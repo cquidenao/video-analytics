@@ -1,0 +1,7 @@
+Flask
+Werkzeug
+opencv-python
+reportlab
+pandas
+scikit-learn
+joblib

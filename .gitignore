@@ -1,0 +1,53 @@
+# Archivos y directorios de Python
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+dist/
+build/
+*.pyc
+*.pyo
+
+# Entorno virtual
+env/
+venv/
+ENV/
+.venv/
+
+# Configuraciones de IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Archivos de configuración
+*.cfg
+*.ini
+*.log
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de datos y pesos
+*.weights
+*.keras
+*.csv
+
+# Subidas y datos temporales
+uploads/
+data/train/
+data/validation/
+
+# Archivos de YOLO
+yolov5/
+*.weights
+*.cfg
+*.pt
+
+# Archivos de datos específicos
+data.yaml
+class_labels.json
+labels_es.json
+error_detection_model.keras
+errors.csv
