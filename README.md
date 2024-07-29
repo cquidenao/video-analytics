@@ -20,3 +20,11 @@ cd video-analytics
 python -m venv env
 env\Scripts\activate
 
+## Instalar las dependencias
+pip install -r requirements.txt
+
+## configurar YOLO
+Descargar pesos y configuraciones de YOLOv4 y YOLOv5
+Coloca los archivos yolov4.weights y yolov4.cfg en el directorio yolov5/.
+Descarga los pesos necesarios para YOLOv5 y colócalos en el mismo directorio yolov5/.
+
