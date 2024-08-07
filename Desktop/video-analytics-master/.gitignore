@@ -1,15 +1,17 @@
-# Archivos de sistema
-.DS_Store
-Thumbs.db
-
-# Directorios y archivos de configuración del usuario
+# Ignorar configuraciones del sistema y archivos locales
 .vscode/
-.idea/
-.env
-
-# Archivos y directorios del sistema
 .cache/
-.conda/
 .config/
 .local/
-AppData/
+.python_history
+__pycache__/
+.gitconfig
+.bash_history
+.DS_Store
+.idea/
+.classpath
+.project
+.settings/
+.metadata/
+.vscode/
+.ipynb_checkpoints/
