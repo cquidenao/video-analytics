@@ -1,0 +1,14 @@
+{
+    "total_detecciones": 424,
+    "detecciones_por_clase": {
+        "amortiguador bueno": 120,
+        "conector": 36,
+        "cojinete": 222,
+        "chicote": 35,
+        "reductor": 11
+    },
+    "confianza_total": 163.78392672538757,
+    "tiempo_total": 27.740694761276245,
+    "frames_procesados": 830,
+    "confianza_promedio": 0.3862828460504424
+}
