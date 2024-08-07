@@ -1,0 +1,15 @@
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Directorios y archivos de configuración del usuario
+.vscode/
+.idea/
+.env
+
+# Archivos y directorios del sistema
+.cache/
+.conda/
+.config/
+.local/
+AppData/
