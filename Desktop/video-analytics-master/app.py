@@ -14,6 +14,7 @@ from fpdf import FPDF
 # Crear una instancia de la aplicación Flask
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads/'
+os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)  # Crear el directorio si no existe
 socketio = SocketIO(app)
 
 # Configuración de MongoDB
@@ -96,7 +97,7 @@ def generate_frames(file_id):
     cap = cv2.VideoCapture(file_path)
     frame_count = 0
     update_interval = 50  # Actualiza las estadísticas cada 50 frames
-    fps = cap.get(cv2.CAP_PROP_FPS)  # Obtener los cuadros por segundo del video
+    fps = cap.get(cv2.CAP_PROP_FPS) or 30  # Establecer un valor predeterminado si FPS no está disponible
     
     while True:
         success, frame = cap.read()
