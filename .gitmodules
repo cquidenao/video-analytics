@@ -1,0 +1,3 @@
+[submodule "Desktop/video analitica/video-analytics-master/yolov5"]
+	path = Desktop/video analitica/video-analytics-master/yolov5
+	url = https://github.com/ultralytics/yolov5.git
