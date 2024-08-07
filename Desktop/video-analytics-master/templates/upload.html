@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Video</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Análisis de Video</h1>
+            <a href="{{ url_for('historico') }}">Ver Histórico</a>
+        </header>
+        <div class="upload-section">
+            <form id="uploadForm" action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data">
+                <input type="file" id="videoFile" name="file" accept="video/*">
+                <label for="videoFile">Subir Video</label>
+                <button type="button" id="uploadBtn">Analizar Video</button>
+            </form>
+        </div>
+        <div class="content-section">
+            <div class="video-section">
+                <h2>Video:</h2>
+                <img id="video-feed" src="{{ url_for('video_feed', file_id=file_id) }}" alt="Video Feed">
+            </div>
+            <div class="stats-section">
+                <div class="general-stats">
+                    <h2>Estadísticas Generales:</h2>
+                    <canvas id="generalStatsChart"></canvas>
+                </div>
+                <div class="error-stats">
+                    <h2>Errores:</h2>
+                    <canvas id="errorStatsChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('uploadBtn').addEventListener('click', function() {
+            document.getElementById('uploadForm').submit();
+        });
+    </script>
+</body>
+</html>

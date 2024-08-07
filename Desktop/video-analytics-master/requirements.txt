@@ -1,0 +1,11 @@
+Flask
+Werkzeug
+opencv-python
+reportlab
+pandas
+scikit-learn
+joblib
+torch
+opencv-python
+numpy
+pandas
