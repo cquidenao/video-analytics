@@ -4,3 +4,6 @@
 [submodule "Desktop/video-analytics-master/yolov5"]
 	path = Desktop/video-analytics-master/yolov5
 	url = https://github.com/ultralytics/yolov5.git
+[submodule "Desktop/video-analytics-master/video-analytics-master/yolov5"]
+	path = Desktop/video-analytics-master/video-analytics-master/yolov5
+	url = https://github.com/ultralytics/yolov5.git

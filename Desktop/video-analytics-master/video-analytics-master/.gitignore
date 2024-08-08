@@ -40,14 +40,11 @@ data/train/
 data/validation/
 
 # Archivos de YOLO
-yolov5/
-*.weights
+
 *.cfg
 *.pt
 
 # Archivos de datos específicos
-data.yaml
 class_labels.json
-labels_es.json
 error_detection_model.keras
 errors.csv
