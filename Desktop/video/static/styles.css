@@ -1,0 +1,119 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #1f1f1f;
+    font-family: Arial, sans-serif;
+    color: #e0e0e0;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #2a2a2a;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #444;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #ffffff;
+}
+
+header a {
+    color: #1abc9c;
+    text-decoration: none;
+}
+
+.upload-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.upload-section input[type="file"] {
+    display: none;
+}
+
+.upload-section label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1abc9c;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.upload-section button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.content-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.video-section {
+    width: 48%;
+}
+
+.stats-section {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Asegura que los elementos se distribuyan uniformemente */
+}
+
+.video-section img {
+    width: 100%;
+    height: auto;
+    max-height: 900px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.general-stats, .error-stats {
+    padding: 20px;
+    background-color: #333;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 100%; /* Asegura que los gráficos ocupen todo el ancho disponible */
+    margin-bottom: 20px; /* Espacio entre los gráficos */
+}
+
+.stats-section h2 {
+    margin-top: 0;
+    color: #1abc9c;
+}
+
+.stats-section canvas {
+    background-color: #2a2a2a;
+    border-radius: 8px;
+}
+
+
+/* Estilos para los contenedores de gráficos y dashboard */
+#generalStatsChart, #errorStatsChart {
+    width: 100%;
+    height: 400px; /* Ajusta según tus necesidades */
+    border: 1px solid #444; /* Borde gris oscuro para coincidir con el tema */
+    background-color: #333; /* Fondo oscuro para los contenedores */
+    margin-bottom: 20px; /* Espacio inferior para separar los contenedores */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra para destacar */
+}

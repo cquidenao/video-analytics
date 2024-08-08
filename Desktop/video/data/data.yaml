@@ -1,0 +1,17 @@
+train: ../data/train
+val: ../data/validation
+
+nc: 12  # Número de clases
+names:
+  0: "amortiguador bueno"
+  1: "amortiguador suelto"
+  2: "chicote"
+  3: "chicote suelto"
+  4: "cojinete"
+  5: "cojinete corrido"
+  6: "conector"
+  7: "conector suelto"
+  8: "panel solar"
+  9: "reductor"
+  10: "torque alineado"
+  11: "torque desalineado"
