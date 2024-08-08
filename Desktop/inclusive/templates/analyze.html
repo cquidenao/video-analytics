@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Video</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/modules/dashboards.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Análisis de Video</h1>
+            <a href="{{ url_for('download_report', file_id=file_id) }}" class="btn">Descargar Informe</a>
+        </header>
+        <div class="upload-section">
+            <form id="uploadForm" action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data">
+                <input type="file" id="videoFile" name="file" accept="video/*">
+                <label for="videoFile">Subir Video</label>
+                <button type="button" id="uploadBtn">Analizar Video</button>
+            </form>
+        </div>
+        <div class="content-section">
+            <div class="video-section">
+                <h2>Video:</h2>
+                <img id="video-feed" src="{{ url_for('video_feed', file_id=file_id) }}" alt="Video Feed">
+            </div>
+            <div class="stats-section">
+                <div class="stats-box">
+                    <h2>Estadísticas Generales:</h2>
+                    <div id="generalStatsChart"></div>
+                </div>
+                <div class="stats-box">
+                    <h2>Errores:</h2>
+                    <div id="errorStatsChart"></div>
+                </div>
+                <div class="stats-box" id="dashboard-container"></div> <!-- Contenedor para el dashboard -->
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script>
+        document.getElementById('uploadBtn').addEventListener('click', function() {
+            document.getElementById('uploadForm').submit();
+        });
+
+        const socket = io();
+        const file_id = '{{ file_id }}';
+
+        socket.on('update_stats', function(data) {
+            if (data.file_id === file_id) {
+                updateCharts(data.stats);
+            }
+        });
+
+        function updateCharts(stats) {
+            Highcharts.chart('generalStatsChart', {
+                chart: {
+                    type: 'bar'
+                },
+                title: {
+                    text: 'Objetos Detectados'
+                },
+                xAxis: {
+                    categories: Object.keys(stats.detections_by_class)
+                },
+                yAxis: {
+                    title: {
+                        text: 'Número de Detecciones'
+                    }
+                },
+                series: [{
+                    name: 'Detecciones',
+                    data: Object.values(stats.detections_by_class),
+                    dataLabels: {
+                        enabled: true,
+                        formatter: function() {
+                            return this.y;
+                        }
+                    }
+                }]
+            });
+
+            Highcharts.chart('errorStatsChart', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Errores por Clase'
+                },
+                xAxis: {
+                    categories: Object.keys(stats.errors),
+                    title: {
+                        text: 'Clases'
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Número de Errores'
+                    }
+                },
+                series: [{
+                    name: 'Errores',
+                    data: Object.values(stats.errors),
+                    color: '#ff0000',  // Color rojo para las barras
+                    dataLabels: {
+                        enabled: true,
+                        formatter: function() {
+                            return this.y;
+                        }
+                    }
+                }]
+            });
+        }
+    </script>
+</body>
+</html>
