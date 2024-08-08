@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "recharts": "^2.12.7",
-    "shadcn": "^1.0.0"
-  }
-}
