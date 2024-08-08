@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir Video para Detección</title>
+    <style>
+        video, img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Subir Video para Detección</h1>
+    <form id="upload-form" enctype="multipart/form-data">
+        <input type="file" id="file-input" name="file" accept="video/*">
+        <button type="button" onclick="uploadFile()">Subir y Analizar</button>
+    </form>
+
+    <video id="video" controls style="display:none;"></video>
+    <img id="processed-video" style="display:none;"/>
+    <div id="alerts" style="color: red;"></div>
+
+    <script>
+        async function uploadFile() {
+            const formData = new FormData(document.getElementById('upload-form'));
+            const response = await fetch('/upload', {
+                method: 'POST',
+                body: formData
+            });
+
+            const data = await response.json();
+            const videoPath = '/uploads/' + data.filename;
+            document.getElementById('video').src = videoPath;
+            document.getElementById('video').style.display = 'block';
+            analyzeVideoStream(data.filename);
+            fetchResults(data.filename);
+        }
+
+        function analyzeVideoStream(filename) {
+            const videoElement = document.getElementById('video');
+            const imgElement = document.getElementById('processed-video');
+            videoElement.style.display = 'none';
+            imgElement.style.display = 'block';
+
+            imgElement.src = '/analyze/' + filename;
+        }
+
+        async function fetchResults(filename) {
+            const response = await fetch('/results/' + filename);
+            const results = await response.json();
+            const alertsDiv = document.getElementById('alerts');
+            alertsDiv.innerHTML = results.alerts.join('<br>');
+        }
+    </script>
+</body>
+</html>
